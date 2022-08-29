@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import HeaderIcon from './HeaderIcon';
-import { BellIcon, ChatIcon, ChevronDownIcon, HomeIcon, UserGroupIcon, ViewGridIcon } from '@heroicons/react/24/solid';
+import { BellIcon, ChatBubbleOvalLeftEllipsisIcon, ChevronDownIcon, HomeIcon, UserGroupIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
 import { FlagIcon, PlayIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 function Header() {
@@ -12,7 +12,7 @@ function Header() {
 
         <div className='flex ml-2 items-center rounded-full bg-gray-100 p-2'>
           <MagnifyingGlassIcon className='h-6 text-gray-600' />
-          <input className='flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink' type="text" placeholder='Search Facebook' />
+          <input className='hidden md:inline-flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink' type="text" placeholder='Search Facebook' />
         </div>
       </div>
 
@@ -28,6 +28,14 @@ function Header() {
       </div>
 
       {/* Right */}
+      <div className='flex items-center sm:space-x-2 justify-end'>
+        {/* Profile pic */}
+        <p className='whitespace-nowrap font-semibold pr-3'>MM BEE</p>
+        <Squares2X2Icon className="icon" />
+        <ChatBubbleOvalLeftEllipsisIcon className="icon" />
+        <BellIcon className="icon" />
+        <ChevronDownIcon className="icon" />
+      </div>
 
     </div>
   )
