@@ -12,8 +12,6 @@ export default function Home() {
         */}
       </Head>
 
-      <h1>Lets build Facebook</h1>
-
       <Header />
 
       <main>
