@@ -11,7 +11,7 @@ export default function Home() {
   if (!session) return <Login />;
 
   return (
-    <div>
+    <div className='h-screen bg-gray-100 overflow-hidden'>
       <Head>
         <title>Facebook</title>
         {/* 
@@ -22,8 +22,7 @@ export default function Home() {
 
       <Header />
 
-      <main>
-        {/* Sidebar */}
+      <main className='flex'>
         <Sidebar />
 
         {/* Feed */}
