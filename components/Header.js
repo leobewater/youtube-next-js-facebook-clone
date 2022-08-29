@@ -2,8 +2,11 @@ import Image from 'next/image';
 import HeaderIcon from './HeaderIcon';
 import { BellIcon, ChatBubbleOvalLeftEllipsisIcon, ChevronDownIcon, HomeIcon, UserGroupIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
 import { FlagIcon, PlayIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { useSession, signOut } from "next-auth/react"
 
 function Header() {
+  const { data: session } = useSession()
+
   return (
     <div className='sticky top-0 z-50 bg-white flex items-center p-2 lg:px-5 shadow-md'>
       {/* Left */}
@@ -30,7 +33,10 @@ function Header() {
       {/* Right */}
       <div className='flex items-center sm:space-x-2 justify-end'>
         {/* Profile pic */}
-        <p className='whitespace-nowrap font-semibold pr-3'>MM BEE</p>
+        <Image onClick={signOut} className="rounded-full cursor-pointer" src={session.user.image} width={40} height={40} layout="fixed" alt="User Image" />
+
+        <p className='whitespace-nowrap font-semibold pr-3'>{session.user.name}</p>
+
         <Squares2X2Icon className="icon" />
         <ChatBubbleOvalLeftEllipsisIcon className="icon" />
         <BellIcon className="icon" />
