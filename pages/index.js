@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Login from '../components/Login'
-import { useSession, signIn, signOut, getSession } from "next-auth/react"
+import { useSession, getSession } from "next-auth/react"
 
-export default function Home({ session }) {
-  if (!session) return <Login />;
+export default function Home({ userSession }) {
+  if (!userSession) return <Login />;
 
   return (
     <div>
@@ -31,10 +31,11 @@ export default function Home({ session }) {
 export async function getServerSideProps(context) {
   // get the user
   const session = await getSession(context);
+  // console.log(session);
 
   return {
     props: {
-      session
+      userSession: session,
     }
   }
 }
