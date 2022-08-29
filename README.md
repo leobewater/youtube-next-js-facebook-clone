@@ -1,3 +1,6 @@
+Video: https://www.youtube.com/watch?v=6fNy0iD3hsk&t=8132s - 2nd app facebook clone
+using nextJS, Tailwindcss, next-auth, Facebook login api to login
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

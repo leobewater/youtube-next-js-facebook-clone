@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Login from '../components/Login'
-import { useSession, getSession } from "next-auth/react"
+import Sidebar from '../components/Sidebar'
+import { getSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 
-export default function Home({ userSession }) {
-  if (!userSession) return <Login />;
+export default function Home() {
+  const { data: session } = useSession()
+
+  if (!session) return <Login />;
 
   return (
     <div>
@@ -20,6 +24,8 @@ export default function Home({ userSession }) {
 
       <main>
         {/* Sidebar */}
+        <Sidebar />
+
         {/* Feed */}
         {/* Widgets */}
       </main>
@@ -35,7 +41,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      userSession: session,
+      session
     }
   }
 }
