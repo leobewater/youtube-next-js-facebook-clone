@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Login from '../components/Login'
 import Sidebar from '../components/Sidebar'
 import Feed from '../components/Feed'
+import Widgets from '../components/Widgets'
 import { getSession } from "next-auth/react"
 import { useSession } from "next-auth/react"
 
@@ -27,8 +28,8 @@ export default function Home() {
         <Sidebar />
 
         <Feed />
-        
-        {/* Widgets */}
+
+        <Widgets />
       </main>
     </div>
   )
