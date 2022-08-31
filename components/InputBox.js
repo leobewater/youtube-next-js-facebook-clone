@@ -34,8 +34,10 @@ function InputBox() {
         }).then((document) => {
             if (imageToPost) {
                 const storageRef = ref(storage, `posts/${document.id}`);
+
                 uploadString(storageRef, imageToPost, "data_url").then((snapshot) => {
                     getDownloadURL(snapshot.ref).then((URL) => {
+                        // save uploaded image url back to post
                         setDoc(
                             doc(db, "posts", document.id),
                             { postImage: URL },
@@ -43,6 +45,7 @@ function InputBox() {
                         );
                         console.log("File available at ", URL);
                     });
+                    
                     removeImage();
                 });
             }
@@ -56,6 +59,7 @@ function InputBox() {
         if (e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0]);
         }
+        // set uploaded result to image variable
         reader.onload = (readerevent) => {
             setImageToPost(readerevent.target.result);
         };
@@ -73,6 +77,12 @@ function InputBox() {
                     <input className="rounded-full h-12 bg-gray-100 flex-grow px-5 focus:outline-none" type="text" ref={inputRef} placeholder={`What's on your mind ${session.user.name}?`} />
                     <button hidden type="submit" onClick={sendPost}>Submit</button>
                 </form>
+                {imageToPost && (
+                    <div onClick={removeImage} className="flex flex-col filter hover:brightness-110 transition duration-150 transform hover:scale-105 cursor-pointer">
+                        <img className="h-10 object-contain" src={imageToPost} alt="" />
+                        <p className="text-xs text-red-500 text-center">Remove</p>
+                    </div>
+                )}
             </div>
 
             <div className="flex justify-evenly p-3 border-t">
@@ -80,9 +90,10 @@ function InputBox() {
                     <VideoCameraIcon className="h-7 text-red-500" />
                     <p className="text-xs sm:text-sm xl:text-base">Live Video</p>
                 </div>
-                <div className="inputIcon">
+                <div onClick={() => filepickerRef.current.click()} className="inputIcon">
                     <CameraIcon className="h-7 text-green-400" />
                     <p className="text-xs sm:text-sm xl:text-base">Photo/Video</p>
+                    <input type="file" hidden onChange={addImageToPost} ref={filepickerRef} />
                 </div>
                 <div className="inputIcon">
                     <FaceSmileIcon className="h-7 text-yellow-300" />
