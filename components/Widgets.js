@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { EllipsisHorizontalIcon, VideoCameraIcon } from '@heroicons/react/24/solid';
+import Contact from './Contact'
 
 const contacts = [
     { src: "https://links.papareact.com/f0p", name: "Jeff Bezos" },
@@ -23,6 +23,10 @@ function Widgets() {
                     <EllipsisHorizontalIcon className='h-4' />
                 </div>
             </div>
+
+            {contacts.map(contact => (
+                <Contact key={contact.name} src={contact.src} name={contact.name} />
+            ))}
         </div>
 
     )
