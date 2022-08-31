@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Login from '../components/Login'
 import Sidebar from '../components/Sidebar'
+import Feed from '../components/Feed'
 import { getSession } from "next-auth/react"
 import { useSession } from "next-auth/react"
 
@@ -25,7 +26,8 @@ export default function Home() {
       <main className='flex'>
         <Sidebar />
 
-        {/* Feed */}
+        <Feed />
+        
         {/* Widgets */}
       </main>
     </div>
