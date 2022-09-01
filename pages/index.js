@@ -47,7 +47,7 @@ export async function getServerSideProps(context) {
   const posts = await getDocs(query(collection(db, 'posts'), orderBy('timestamp', 'desc')));
   // console.log(posts);
 
-  // prefetch don't fetch timestamp
+  // when prefetch, ignore timestamp for now
   const docs = posts.docs.map(post => ({
     id: post.id,
     ...post.data(),

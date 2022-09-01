@@ -16,7 +16,12 @@ function Post({
                     <img className="rounded-full" src={image} width={40} height={40} alt="" />
                     <div>
                         <p className="font-medium">{name}</p>
-                        <p className="text-xs text-gray-400">{new Date(timestamp?.toDate()).toLocaleString()}</p>
+                        {timestamp ? (
+                            <p className="text-xs text-gray-400">{new Date(timestamp?.toDate()).toLocaleString()}</p>
+                        ): (
+                            <p className='text-xs text-gray-400'>Loading</p>
+                        )}
+                        
                     </div>
                 </div>
                 <p className="pt-4">
